@@ -1,0 +1,25 @@
+# Falco Talon SOAR 설치 설정
+# helm install falco-talon falcosecurity/falco-talon \
+#   --namespace falco-talon \
+#   --values talon-values.yaml
+#
+# 핵심 설정:
+# - deduplication.timeWindowSeconds: 30초 내 동일 이벤트 중복 처리 방지 (무한루프 방지)
+# - actionner: kubernetes:terminate → 위협 Pod 즉시 삭제
+
+config:
+  deduplication:
+    leaderElection: true
+    # 30초 내 동일 이벤트 재탐지 방지 (Talon 삭제 → 새 Pod 시작 → 재탐지 무한루프 방지)
+    timeWindowSeconds: 30
+
+  rulesOverride: |
+    - rule: Terminal shell in container
+      actions:
+        - action: Terminate Pod
+          actionner: kubernetes:terminate
+          parameters:
+            ignore_daemonsets: false
+            ignore_statefulsets: false
+            # 즉시 삭제 (grace period 없음)
+            grace_period_seconds: 0

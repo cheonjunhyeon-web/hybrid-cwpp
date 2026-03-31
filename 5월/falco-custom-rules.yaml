@@ -1,0 +1,33 @@
+# Falco 커스텀 룰 - delta-lab 취약 웹앱 대상
+# configmap 수정: kubectl edit configmap falco-rules -n falco
+# 수정 후 재시작: kubectl rollout restart daemonset/falco -n falco
+#
+# 핵심: proc.tty != 0 조건 추가
+# - kubectl exec -it로 직접 접속한 경우(tty 있음)만 탐지
+# - 컨테이너 자동 시작 프로세스(tty 없음)는 제외 → 무한루프 방지
+
+- rule: Delta Lab Sensitive File Read
+  desc: delta-lab 컨테이너에서 민감 파일 접근 탐지 (interactive 쉘 접속 시만)
+  condition: >
+    open_read and container and
+    (k8s.pod.name startswith "delta-lab" or container.name = "lab") and
+    (fd.name startswith /etc/passwd or fd.name startswith /etc/shadow) and
+    proc.tty != 0
+  output: >
+    Delta Lab Sensitive File Read
+    (user=%user.name pod=%k8s.pod.name file=%fd.name cmd=%proc.cmdline tty=%proc.tty)
+  priority: WARNING
+  tags: [delta_lab, file_access]
+
+- rule: Delta Lab Shell Spawned
+  desc: delta-lab 컨테이너에서 쉘 실행 탐지
+  condition: >
+    spawned_process and container and
+    (k8s.pod.name startswith "delta-lab" or container.name = "lab") and
+    shell_procs and
+    proc.tty != 0
+  output: >
+    Delta Lab Shell Spawned
+    (user=%user.name pod=%k8s.pod.name shell=%proc.name cmd=%proc.cmdline)
+  priority: WARNING
+  tags: [delta_lab, shell]

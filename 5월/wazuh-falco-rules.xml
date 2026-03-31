@@ -1,0 +1,39 @@
+<!-- Wazuh 커스텀 룰 - Falco 이벤트 탐지 -->
+<!-- 파일 경로: /var/ossec/etc/rules/falco_rules.xml -->
+<!--
+룰 계층 구조:
+  100600 (베이스) → 100610 (Notice) → 100613 (Warning) → 100620 (Delta Lab 공격 탐지)
+-->
+
+<group name="falco,">
+
+  <!-- 베이스 룰: Falco 이벤트 식별 -->
+  <rule id="100600" level="0">
+    <decoded_as>falcosidekick-syslog</decoded_as>
+    <description>Falco event from Falcosidekick</description>
+    <options>no_full_log</options>
+  </rule>
+
+  <!-- Notice 레벨 이벤트 -->
+  <rule id="100610" level="6">
+    <if_sid>100600</if_sid>
+    <match>"priority":"Notice"</match>
+    <description>Falco Notice event</description>
+  </rule>
+
+  <!-- Warning 레벨 이벤트 -->
+  <rule id="100613" level="8">
+    <if_sid>100600</if_sid>
+    <match>"priority":"Warning"</match>
+    <description>Falco Warning event</description>
+  </rule>
+
+  <!-- Delta Lab 공격 탐지 (최종 알림) -->
+  <rule id="100620" level="10">
+    <if_sid>100613</if_sid>
+    <match>Delta Lab</match>
+    <description>Falco Delta Lab Attack Detected</description>
+    <group>falco,delta_lab,</group>
+  </rule>
+
+</group>
