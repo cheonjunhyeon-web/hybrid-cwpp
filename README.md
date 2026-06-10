@@ -137,8 +137,7 @@ AWS 클라우드에서 웹 서비스를 운영하면서 보안 모니터링 및 
 ## 📊 성과 및 결과
 
 <p align="center">
-<img width="2351" height="1071" alt="통합보안 이상탐지 플랫폼 drawio" src="https://github.com/user-attachments/assets/5eba2a1d-cfb4-47cd-91a6-faa06e55eee9" />
-
+<img width="1370" height="508" alt="스크린샷 2026-06-10 오전 10 52 16" src="https://github.com/user-attachments/assets/a39b08f0-5f6c-41cc-856f-132368893dd8" />
   <br>
   <em>Grafana 통합 보안 이벤트 모니터링 대시보드</em>
 </p>
@@ -177,8 +176,3 @@ AWS 클라우드에서 웹 서비스를 운영하면서 보안 모니터링 및 
 - Cilium CIDR 충돌 / IKEv1 협상 / CGW IP 불일치 등 VPN 트러블슈팅 직접 해결
 - 탐지 → 분석 → 자동 대응 → 시각화 전체 파이프라인 구현 및 검증 완료
 
-<br>
-
-## 📎 트러블슈팅
-
-[TROUBLESHOOTING.md](./TROUBLESHOOTING.md) 참고
