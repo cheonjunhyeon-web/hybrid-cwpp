@@ -157,19 +157,6 @@ AWS 클라우드에서 웹 서비스를 운영하면서 보안 모니터링 및 
 | 탐지 갱신 주기 | 5초 |
 | 공격 후 대기 시간 | 10초 |
 
-**전체 파이프라인 구현 완료**
-
-| 항목 | 상태 |
-|---|---|
-| AWS VPC / EKS 클러스터 구성 | ✅ |
-| 물리서버 3대 Kubernetes HA 구성 | ✅ |
-| Kafka 클러스터 분산 배치 (3 Broker) | ✅ |
-| Site-to-Site VPN 연결 | ✅ |
-| Falco 런타임 탐지 | ✅ |
-| Wazuh SIEM 커스텀 디코더 / 룰 | ✅ |
-| Falco Talon 자동 대응 | ✅ |
-| Grafana 통합 대시보드 | ✅ |
-
 - AWS EKS와 온프레미스 Kubernetes를 VPN으로 연결한 하이브리드 보안 아키텍처 구현
 - Falcosidekick → Syslog 메시지 파싱 문제 해결 (커스텀 디코더 직접 작성)
 - Talon 무한루프 문제 해결 (proc.tty 조건 + deduplication 조합)
