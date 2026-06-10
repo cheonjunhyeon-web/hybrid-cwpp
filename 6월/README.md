@@ -157,13 +157,14 @@ http://<EKS-ALB>/v2/lab/exec?cmd=cat%20/etc/passwd
 ### 5. 대시보드 스크린샷
 
 <p align="center">
-  <img src="images/grafana-dashboard.png" width="800"/>
+<img width="1355" height="650" alt="스크린샷 2026-06-10 오전 10 52 29" src="https://github.com/user-attachments/assets/250d73c0-123d-4022-b5d8-968830a057c5" />
+
   <br>
   <em>Grafana 통합 보안 이벤트 모니터링 대시보드 — Falco 탐지 38건 / 공격자 IP 11개</em>
 </p>
 
 <p align="center">
-  <img src="images/grafana-attack-log.png" width="800"/>
+    <img width="1370" height="508" alt="스크린샷 2026-06-10 오전 10 52 16" src="https://github.com/user-attachments/assets/4ab3eabd-5f08-4682-8c38-cc557d03087a" />
   <br>
   <em>HTTP 공격 로그 및 Falco 컨테이너 공격 탐지 상세</em>
 </p>
