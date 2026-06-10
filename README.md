@@ -20,7 +20,9 @@ Falco 기반 컨테이너 런타임 탐지, Kafka 이벤트 스트리밍, Falco 
 ## 🏗️ 아키텍처
 
 <p align="center">
-  <img src="images/architecture.png" width="800"/>
+<img width="2351" height="1071" alt="통합보안 이상탐지 플랫폼 drawio" src="https://github.com/user-attachments/assets/0c1f3bab-4572-4a0e-b7f8-a84637cdf27f" /><img width="1370" height="508" alt="스크린샷 2026-06-10 오전 10 52 16" src="https://github.com/user-attachments/assets/b15c89c6-b517-4af4-9376-6b7dba5171d9" />
+<img width="1370" height="508" alt="스크린샷 2026-06-10 오전 10 52 16" src="https://github.com/user-attachments/assets/6e7a38ed-0e81-4a5b-952f-eb07a3a9839f" />
+
 </p>
 
 AWS 클라우드에서 웹 서비스를 운영하면서 보안 모니터링 및 대응 시스템은 온프레미스 Kubernetes 클러스터에 구축하는 하이브리드 방식으로 설계했다.
@@ -137,13 +139,14 @@ AWS 클라우드에서 웹 서비스를 운영하면서 보안 모니터링 및 
 ## 📊 성과 및 결과
 
 <p align="center">
-  <img src="images/grafana-dashboard.png" width="800"/>
+<img width="2351" height="1071" alt="통합보안 이상탐지 플랫폼 drawio" src="https://github.com/user-attachments/assets/5eba2a1d-cfb4-47cd-91a6-faa06e55eee9" />
+
   <br>
   <em>Grafana 통합 보안 이벤트 모니터링 대시보드</em>
 </p>
 
 <p align="center">
-  <img src="images/grafana-attack-log.png" width="800"/>
+   <img width="1355" height="650" alt="스크린샷 2026-06-10 오전 10 52 29" src="https://github.com/user-attachments/assets/72baae96-e816-4be4-9b25-e318530b8200" />
   <br>
   <em>HTTP 공격 로그 및 Falco 컨테이너 공격 탐지 현황</em>
 </p>
