@@ -157,14 +157,14 @@ http://<EKS-ALB>/v2/lab/exec?cmd=cat%20/etc/passwd
 ### 5. 대시보드 스크린샷
 
 <p align="center">
-<img width="1355" height="650" alt="스크린샷 2026-06-10 오전 10 52 29" src="https://github.com/user-attachments/assets/250d73c0-123d-4022-b5d8-968830a057c5" />
+<img width="1370" height="508" alt="스크린샷 2026-06-10 오전 10 52 16" src="https://github.com/user-attachments/assets/4ab3eabd-5f08-4682-8c38-cc557d03087a" />
 
   <br>
   <em>Grafana 통합 보안 이벤트 모니터링 대시보드 — Falco 탐지 38건 / 공격자 IP 11개</em>
 </p>
 
 <p align="center">
-    <img width="1370" height="508" alt="스크린샷 2026-06-10 오전 10 52 16" src="https://github.com/user-attachments/assets/4ab3eabd-5f08-4682-8c38-cc557d03087a" />
+   <img width="1355" height="650" alt="스크린샷 2026-06-10 오전 10 52 29" src="https://github.com/user-attachments/assets/250d73c0-123d-4022-b5d8-968830a057c5" />
   <br>
   <em>HTTP 공격 로그 및 Falco 컨테이너 공격 탐지 상세</em>
 </p>
@@ -196,21 +196,4 @@ http://<EKS-ALB>/v2/lab/exec?cmd=cat%20/etc/passwd
 
 <br>
 
-## 💬 느낀점
 
-AWS와 물리서버를 연결하는 과정에서 Cilium이 쓰는 10.0.0.0/16과 AWS VPC가 같은 대역이라 라우팅이 꼬이는 걸 처음 봤을 때, 이론으로 배운 CIDR 개념이 실제로 이렇게 충돌하는구나 싶었다. 설정이 다 맞는 것 같은데 안 된다는 게 얼마나 막막한 건지 이번에 제대로 느꼈고, 결국 tcpdump로 패킷을 직접 찍어보면서 어디서 끊기는지 찾아낸 게 기억에 남는다.
-
-Wazuh 디코더 문제도 비슷했다. Falco 이벤트가 Wazuh에 안 뜨는데 패킷은 도달하고 있었다. 처음엔 네트워크 문제인 줄 알았는데 알고 보니 syslog 헤더 때문에 JSON 파싱이 안 된 거였다. 툴을 설치하는 것과 툴 사이를 실제로 연결하는 건 완전히 다른 작업이라는 걸 이번에 체감했다.
-
-3월부터 6월까지 AWS 인프라 설계부터 물리서버 구성, VPN 연결, SIEM 연동, 자동 대응까지 혼자 쌓아올리면서 각 계층이 어떻게 연결되는지 눈으로 확인했다. 문서로만 보던 하이브리드 아키텍처가 실제로 동작하는 걸 보는 순간이 이 프로젝트에서 가장 뿌듯했다.
-
-<br>
-
-## 향후 개선 방향
-
-- 이벤트 유형별 위험도 분류 체계 고도화
-- 반복 탐지 이벤트에 대한 상관분석 룰 추가
-- Wazuh Indexer 기반 대시보드 고도화
-- 탐지 이벤트별 대응 이력 저장
-- Slack 알림 메시지에 이벤트 원인 / 대상 Pod / Source IP / 대응 결과 포함
-- 오탐 이벤트 분류 및 예외 룰 관리
